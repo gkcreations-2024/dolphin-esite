@@ -7,8 +7,13 @@ require('dotenv').config();
 const app = express();
 const upload = multer({ storage: multer.memoryStorage() }); // Use in-memory storage
 
-// Enable CORS for all origins
-app.use(cors());
+// Enable CORS for your Hostinger domain
+const corsOptions = {
+    origin: 'https://kalvidolphin.com', // Your Hostinger domain
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 // For parsing application/json
 app.use(express.json());
